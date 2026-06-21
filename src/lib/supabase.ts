@@ -1,12 +1,16 @@
 import { createClient } from '@supabase/supabase-js';
 
-// These variables must be provided in your environment settings
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder-project.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key';
+// Fetch environment variables
+const envUrl = import.meta.env.VITE_SUPABASE_URL;
+const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+// Use placeholders if variables are missing or empty to prevent initialization errors
+const supabaseUrl = envUrl && envUrl.trim() !== "" ? envUrl : 'https://placeholder-project.supabase.co';
+const supabaseAnonKey = envKey && envKey.trim() !== "" ? envKey : 'placeholder-key';
+
+if (!envUrl || !envKey) {
   console.warn(
-    'Supabase credentials missing. Please click the "Add Database" button or set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your environment variables.'
+    'Supabase credentials missing or empty. If you just added them to .env, please restart the app using the button above.'
   );
 }
 
