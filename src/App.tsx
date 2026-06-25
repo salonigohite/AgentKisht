@@ -10,6 +10,7 @@ import QuickCollect from "./pages/QuickCollect";
 import Transactions from "./pages/Transactions";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
+import AuthCallback from "./pages/AuthCallback";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/quick-collect" element={<QuickCollect />} />
             <Route path="/transactions" element={<Transactions />} />
