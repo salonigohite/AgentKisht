@@ -34,7 +34,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signInWithGoogle = async () => {
     try {
-      const redirectUrl = `${window.location.origin}/`;
+      // Use a specific callback route instead of redirecting to origin
+      const redirectUrl = `${window.location.origin}/auth/callback`;
       console.log('Redirecting to:', redirectUrl);
       
       await supabase.auth.signInWithOAuth({
